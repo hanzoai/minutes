@@ -66,6 +66,7 @@ pub struct ClaudeChatContent {
 /// LLM Provider enumeration for multi-provider support
 #[derive(Debug, Clone, PartialEq)]
 pub enum LLMProvider {
+    Hanzo,
     OpenAI,
     Claude,
     Groq,
@@ -79,6 +80,7 @@ impl LLMProvider {
     /// Parse provider from string (case-insensitive)
     pub fn from_str(s: &str) -> Result<Self, String> {
         match s.to_lowercase().as_str() {
+            "hanzo" => Ok(Self::Hanzo),
             "openai" => Ok(Self::OpenAI),
             "claude" => Ok(Self::Claude),
             "groq" => Ok(Self::Groq),
@@ -149,6 +151,10 @@ pub async fn generate_summary(
     }
 
     let (api_url, mut headers) = match provider {
+        LLMProvider::Hanzo => (
+            "https://api.hanzo.ai/v1/chat/completions".to_string(),
+            header::HeaderMap::new(),
+        ),
         LLMProvider::OpenAI => (
             "https://api.openai.com/v1/chat/completions".to_string(),
             header::HeaderMap::new(),
@@ -335,6 +341,7 @@ pub async fn generate_summary(
 /// Helper function to get provider name for logging
 fn provider_name(provider: &LLMProvider) -> &str {
     match provider {
+        LLMProvider::Hanzo => "Hanzo",
         LLMProvider::OpenAI => "OpenAI",
         LLMProvider::Claude => "Claude",
         LLMProvider::Groq => "Groq",

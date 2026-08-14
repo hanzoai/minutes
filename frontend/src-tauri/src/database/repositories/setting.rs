@@ -80,6 +80,7 @@ impl SettingsRepository {
         }
 
         let api_key_column = match provider {
+            "hanzo" => "hanzoApiKey",
             "openai" => "openaiApiKey",
             "claude" => "anthropicApiKey",
             "ollama" => "ollamaApiKey",
@@ -118,6 +119,7 @@ impl SettingsRepository {
         }
 
         let api_key_column = match provider {
+            "hanzo" => "hanzoApiKey",
             "openai" => "openaiApiKey",
             "ollama" => "ollamaApiKey",
             "groq" => "groqApiKey",
@@ -244,6 +246,7 @@ impl SettingsRepository {
         }
 
         let api_key_column = match provider {
+            "hanzo" => "hanzoApiKey",
             "openai" => "openaiApiKey",
             "ollama" => "ollamaApiKey",
             "groq" => "groqApiKey",

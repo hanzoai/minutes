@@ -8,8 +8,14 @@
 import { invoke } from '@tauri-apps/api/core';
 import { TranscriptModelProps } from '@/components/TranscriptSettings';
 
+/**
+ * Routing aliases served by api.hanzo.ai. Aliases rather than pinned versions,
+ * so the app follows the catalog instead of going stale when models rotate.
+ */
+export const HANZO_MODELS = ['best', 'enso', 'enso-flash', 'enso-ultra'];
+
 export interface ModelConfig {
-  provider: 'ollama' | 'groq' | 'claude' | 'openrouter' | 'openai' | 'builtin-ai' | 'custom-openai';
+  provider: 'hanzo' | 'ollama' | 'groq' | 'claude' | 'openrouter' | 'openai' | 'builtin-ai' | 'custom-openai';
   model: string;
   whisperModel: string;
   /**

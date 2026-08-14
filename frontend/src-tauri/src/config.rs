@@ -11,6 +11,10 @@ pub const DEFAULT_WHISPER_MODEL: &str = "large-v3-turbo";
 /// This is the quantized version optimized for speed.
 pub const DEFAULT_PARAKEET_MODEL: &str = "parakeet-tdt-0.6b-v3-int8";
 
+/// Default summary model on api.hanzo.ai. `best` is Hanzo's routing alias, so
+/// the app follows the catalog instead of pinning a version that will age out.
+pub const DEFAULT_SUMMARY_MODEL: &str = "best";
+
 /// Whisper model catalog with metadata for all supported models.
 /// Used by both WhisperEngine::discover_models() and discover_models_standalone().
 ///
