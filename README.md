@@ -36,6 +36,31 @@ pnpm install
 pnpm tauri:build
 ```
 
+## Releasing
+
+There is no release yet, and two things must be settled before there is one.
+
+**The updater's signing key is still upstream's.** `tauri.conf.json` points the
+updater at this repo's releases, but the `pubkey` it verifies against is the
+minisign key from meetily, whose private half we do not have. Nothing is
+exposed by this — the endpoint serves nothing, so no update is offered, and a
+manifest we cannot sign is a manifest the app would reject. It is a trap rather
+than a hole: the first person to cut a release will produce a binary whose
+updater can never succeed. Generate a Hanzo key with `tauri signer generate`,
+replace the `pubkey`, and keep the private half in KMS. Do not answer a failing
+signature check by turning the check off.
+
+**ffmpeg and the Parakeet models still come from upstream's hosts.**
+`src-tauri/build/ffmpeg.rs` downloads five binaries from a Zackriya GitHub
+repository at build time, and the Parakeet engine fetches models from
+`meetily.towardsgeneralintelligence.com`. Both work and neither was changed,
+because inventing a Hanzo URL that does not exist would only have broken the
+build. Both are someone else's host in our supply chain, and re-hosting them is
+a decision, not a chore.
+
+The Rust side has never been compiled here — this machine has no `cargo`. Run
+`cargo check` before trusting any of it.
+
 ## Credit
 
 Minutes is a fork of [meetily](https://github.com/Zackriya-Solutions/meeting-minutes)

@@ -110,9 +110,8 @@ We will notify users of any material changes to this privacy policy through:
 ## Contact Us
 
 For privacy-related questions or concerns:
-- **GitHub Issues**: [Create an issue](https://git.hanzo.ai/hanzoai/minutes/issues)
-- **Email**: [Contact form](https://www.zackriya.com/service-interest-form/)
-- **Community**: [Discord](https://discord.gg/crRymMQBFH)
+- **Issues**: [Open an issue](https://git.hanzo.ai/hanzoai/minutes/issues)
+- **Web**: [hanzo.ai](https://hanzo.ai)
 
 ## Open Source Commitment
 
